@@ -4,6 +4,9 @@ window.onload = function(){
     let gameState = ["","","","","","","","",""]
     let board = document.querySelectorAll("#board div");
 
+
+
+
     for (let x=0; x < 9; x++){
 
         board[x].classList.add("square");
@@ -30,8 +33,18 @@ window.onload = function(){
         
 
         })
+
+        board[x].addEventListener("mouseover",function(){
+
+            this.classList.add("hover");
+
+        })
+        		board[x].addEventListener('mouseout', function(){
+			this.classList.remove("hover");
+		});
     }
 
+    
 
 
 
