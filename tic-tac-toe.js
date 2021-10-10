@@ -11,7 +11,7 @@ window.onload = function(){
 
 
 
-    for (let x=0; x < 9; x++){
+    for (let x = 0; x < 9; x++){
 
         board[x].classList.add("square");
 
@@ -19,7 +19,7 @@ window.onload = function(){
 
         gameState[x] = move;
 
-        for (let i=0; i < winPerms.length; i++){
+        for (let i = 0; i < winPerms.length; i++){
 
             if (gameState[winPerms[i][2]] == move && gameState[winPerms[i][1]] == move && gameState[winPerms[i][0]] == move){
 
@@ -38,7 +38,7 @@ window.onload = function(){
                 move = "O";
                 player = "P2"
                 board[x].style.pointerEvents = "none";
-    
+
 
             }
 
@@ -61,20 +61,20 @@ window.onload = function(){
             this.classList.add("hover");
 
         })
+
         board[x].addEventListener('mouseout', function(){
 
 			this.classList.remove("hover");
 		});
     }
 
-    
     newGame.addEventListener("click",function(){
 
 
         statmsg.textContent = "Move your mouse over a square and click to play an X or an O."
         statmsg.classList.remove("you-won")
 
-        for (let x=0; x < 9; x++){
+        for (let x = 0; x < 9; x++){
 
             board[x].classList.remove("X","O")
             board[x].textContent = "";
@@ -87,8 +87,6 @@ window.onload = function(){
         }
 
     })
-
-
 
 
 }   
