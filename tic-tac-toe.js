@@ -6,7 +6,7 @@ window.onload = function(){
     let board = document.querySelectorAll("#board div");
     const winPerms = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
 	let statmsg = document.querySelector("#status");
-
+    let newGame = document.querySelector(".btn");
 
 
 
@@ -19,13 +19,15 @@ window.onload = function(){
 
         gameState[x] = move;
 
-        for (i = 0; i < winPerms.length; i++){
+        for (let i=0; i < winPerms.length; i++){
 
             if (gameState[winPerms[i][2]] == move && gameState[winPerms[i][1]] == move && gameState[winPerms[i][0]] == move){
 
-                statmsg.textContent = "Congratulations! " + move + " is the winner";
-
                 statmsg.classList.add("you-won");   
+                statmsg.textContent = "Congratulations! " + move + " is the winner";
+                for (let x = 0; x <9; x++){
+                board[x].style.pointerEvents = "none";
+                }
             }
         }
 
@@ -35,6 +37,8 @@ window.onload = function(){
                 board[x].classList.add("X");
                 move = "O";
                 player = "P2"
+                board[x].style.pointerEvents = "none";
+    
 
             }
 
@@ -44,6 +48,8 @@ window.onload = function(){
                 board[x].classList.add("O");
                 move = "X";
                 player = "P1"
+                board[x].style.pointerEvents = "none";
+
 
 
             }
@@ -62,7 +68,25 @@ window.onload = function(){
     }
 
     
+    newGame.addEventListener("click",function(){
 
+
+        statmsg.textContent = "Move your mouse over a square and click to play an X or an O."
+        statmsg.classList.remove("you-won")
+
+        for (let x=0; x < 9; x++){
+
+            board[x].classList.remove("X","O")
+            board[x].textContent = "";
+            gameState = ["","","","","","","","",""]
+            player = "P1"
+            move = "X"
+            board[x].style.pointerEvents = "all";
+
+
+        }
+
+    })
 
 
 
